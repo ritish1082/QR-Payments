@@ -48,8 +48,8 @@ def structure_data(stall_name, data):
         if food_item!='showpassword':
             foodData[food_item]=data[food_item]
 
-    data = {"userData": userData, "metaData": metaData, "foodData": foodData, "foodPrices": foodPrices}
+    stallData={"stallName": stall_name}
 
-    print(data)
+    data = {"userData": userData, "stallData": stallData, "metaData": metaData, "foodData": foodData, "foodPrices": foodPrices}
 
     return data

@@ -8,23 +8,48 @@ from src import prepare_qrcode_data as pqrd
 app = Flask(__name__)
 
 app.secret_key="1234"
+session_username=None
 
 @app.route('/', methods=['GET'])
 def homePage():
 
+    session["username"]=session_username
     return render_template('home.html')
+    
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+    username = request.form["username"]
+    password = request.form["password"]
+
+    registration_file = open('./static/data/UserRegistrationData.csv')
+    users_data = csv.reader(registration_file)
+
+    for user_data in users_data:
+
+        if user_data[0]==username and user_data[1]==password:
+            session["username"]=username
+            session_username=username
+
+            return render_template('home.html')
+
+    if session["username"]==None:
+        return render_template('login.html', status="Invalid Login Attempt")
 
 
 @app.route('/getStalls', methods=['GET'])
 def stallsPage():
 
-    stalls = os.listdir('./static/data/')
-    stalls_names = []
+    stalls_names = ['BombayChat', 'ChillZone', 'FastFood', 'Frankie']
 
-    for stall in stalls:
-        stalls_names.append(stall.split('.')[0])
+    if session["username"]!=None:
 
-    return render_template('stalls.html', stalls_names=stalls_names)
+        return render_template('stalls.html', stalls_names=stalls_names)
+
+
+    else:
+        return render_template('login.html', status=None)
 
 
 @app.route('/orderFood/<stall_name>', methods=['GET', 'POST'])
@@ -43,7 +68,7 @@ def orderFood(stall_name):
 
     no_of_food_items = len(food_items)
 
-    return render_template('orderFood.html', stall_name=stall_name, no_of_food_items=no_of_food_items, food_items=food_items)
+    return render_template('orderFood.html', username=session["username"], stall_name=stall_name, no_of_food_items=no_of_food_items, food_items=food_items)
 
 
 @app.route('/generateQRCode/<stall_name>', methods=['GET', 'POST'])
