@@ -13,7 +13,7 @@
     <form action="/generateQRCode/{{stall_name}}" method="post">
 
         <div class="text-center mt-5">
-            <input class="form-control w-25 d-inline border border-dark" type="text" name="username" id="username" placeholder="username" required />
+            <input class="form-control w-25 d-inline border border-dark" type="text" name="username" id="username" placeholder="username" value="{{username}}" readonly />
             <input class="form-control w-25 d-inline border-dark" type="password" name="password" id="password" pattern="[0-9]*" inputmode="numeric" placeholder="enter pin" maxlength="6" minlength="6" required />
             <input class="form-control-checkbox" type="checkbox" name="showpassword" onclick="showPassword()" />
             <label for="showpassword">Show Password</label>
