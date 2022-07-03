@@ -33,8 +33,7 @@ def structure_data(stall_name, data):
     file_reader = csv.reader(file)
 
     for row in file_reader:
-        print(row)
-        foodPrices[row[0]]=row[1]
+        foodPrices[row[0]]=int(row[1])
 
     file.close()
 
@@ -46,7 +45,7 @@ def structure_data(stall_name, data):
     for food_item in data:
 
         if food_item!='showpassword':
-            foodData[food_item]=data[food_item]
+            foodData[food_item]=int(data[food_item])
 
     stallData={"stallName": stall_name}
 
