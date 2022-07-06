@@ -20,26 +20,6 @@ function decrementQuantity(element){
 
 }
 
-function showPassword(){
-
-    let passwordType = document.getElementById("password").type
-
-    if(passwordType==='text'){
-
-        passwordType='password'
-        document.getElementById("password").type=passwordType
-
-    }
-
-    else{
-
-        passwordType='text'
-        document.getElementById("password").type=passwordType
-
-    }
-
-}
-
 function incrementQuantity(element){
 
     let itemId = element.name

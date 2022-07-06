@@ -1,3 +1,4 @@
+from crypt import methods
 import csv
 import os
 from flask import Flask, render_template, request, url_for, session, send_file
@@ -9,6 +10,9 @@ app = Flask(__name__)
 
 app.secret_key="1234"
 session_username=None
+
+global data
+data = {}
 
 @app.route('/', methods=['GET'])
 def homePage():
@@ -30,12 +34,11 @@ def login():
 
         if user_data[0]==username and user_data[1]==password:
             session["username"]=username
-            session_username=username
 
             return render_template('home.html')
 
     if session["username"]==None:
-        return render_template('Login.html', status="Invalid Login Attempt")
+        return render_template('login.html', status="Invalid Login Attempt")
 
 
 @app.route('/getStalls', methods=['GET'])
@@ -49,7 +52,7 @@ def stallsPage():
 
 
     else:
-        return render_template('Login.html', status=None)
+        return render_template('login.html', status=None)
 
 
 @app.route('/orderFood/<stall_name>', methods=['GET', 'POST'])
@@ -71,20 +74,52 @@ def orderFood(stall_name):
     return render_template('orderFood.html', username=session["username"], stall_name=stall_name, no_of_food_items=no_of_food_items, food_items=food_items)
 
 
-@app.route('/generateQRCode/<stall_name>', methods=['GET', 'POST'])
-def generateQRCode(stall_name):
+@app.route('/enterPin/<stall_name>', methods=['GET', 'POST'])
+def enterPin(stall_name):
 
+    session["stallName"] = stall_name
+    global data
     data=dict(request.form)
 
-    data=pqrd.structure_data(stall_name, data)
+    return render_template('pin.html', status=None)
 
-    filename=data["userData"]["username"]+'_qrcode'
 
-    status = qr.generate_qrcode(str(data), filename)
+@app.route('/generateQRCode', methods=['GET', 'POST'])
+def generateQRCode():
 
-    session[filename]=filename+'.png'
+    pin=''
 
-    return render_template('serveQRCode.html', filename=filename+'.png')
+    for i in range(1, 7):
+        pin+=request.form['digit-'+str(i)]
+
+    registration_file = open('./static/data/UserRegistrationData.csv')
+    users_data = csv.reader(registration_file)
+
+    username = session["username"]
+    flag=0
+
+    for user_data in users_data:
+
+        if user_data[0]==username and user_data[2]==pin:
+            flag=1
+
+    if flag:
+
+        global data
+        data["password"]=pin
+        data=pqrd.structure_data(session["stallName"], data)
+
+        filename=data["userData"]["username"]+'_qrcode'
+
+        status = qr.generate_qrcode(str(data), filename)
+
+        session[filename]=filename+'.png'
+
+        return render_template('serveQRCode.html', filename=filename+'.png')
+
+    else:
+
+        return render_template('pin.html', status="Invalid Pin")
 
 
 @app.route('/downloadQRCode/<filename>', methods=['GET'])

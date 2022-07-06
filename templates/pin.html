@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/styles/pin.css">
+        <title>PIN</title>
+    </head>
+    <body>
+
+        <form action="/generateQRCode" method="post" class="digit-group" data-group-name="digits" data-autosubmit="false" autocomplete="off">
+            <input type="password" id="digit-1" name="digit-1" data-next="digit-2" pattern="[0-9]*" inputmode="numeric" /> 
+            <input type="password" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" pattern="[0-9]*" inputmode="numeric" />  
+            <input type="password" id="digit-3" name="digit-3" data-next="digit-4" data-previous="digit-2" pattern="[0-9]*" inputmode="numeric" />                  
+            <input type="password" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" pattern="[0-9]*" inputmode="numeric" />
+            <input type="password" id="digit-5" name="digit-5" data-next="digit-6" data-previous="digit-4" pattern="[0-9]*" inputmode="numeric" />
+            <input type="password" id="digit-6" name="digit-6" data-next="digit-7" data-previous="digit-5" pattern="[0-9]*" inputmode="numeric" />  
+            <input class="form-control-checkbox" type="checkbox" name="showpassword" onclick="showPassword()" />
+            <label for="showpassword">Show Password</label>
+            <button class="btn btn-success">Generate QR</button>
+        </form>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+        <script src="../static/script/pin.js"></script> 
+    </body>
+</html>
