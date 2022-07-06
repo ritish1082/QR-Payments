@@ -9,6 +9,10 @@
     </head>
     <body>
 
+        {% if status!=None %}
+            <h1>{{status}}</h1>
+        {% endif %}
+
         <form action="/generateQRCode" method="post" class="digit-group" data-group-name="digits" data-autosubmit="false" autocomplete="off">
             <input type="password" id="digit-1" name="digit-1" data-next="digit-2" pattern="[0-9]*" inputmode="numeric" /> 
             <input type="password" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" pattern="[0-9]*" inputmode="numeric" />  
