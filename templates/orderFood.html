@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/styles/orderfood.css">
     <script src="../static/script/orderFood.js"></script>
     <title>Order Food</title>
 </head>
@@ -12,49 +13,50 @@
     
     <form action="/enterPin/{{stall_name}}" method="post">
 
-        <div class="text-center mt-5">
-            <input class="form-control w-25 d-inline border border-dark" type="text" name="username" id="username" placeholder="username" value="{{username}}" readonly />
+        <div class="text-center mx-auto m-5">
+            <input class="form-control w-50 d-inline border border-dark" type="text" name="username" id="username" placeholder="username" value="{{username}}" readonly />
         </div>
-
         <table class="table text-center">
-            <thead>
-                <th scope="col">Item</th>
-                <th scope="col">Base Price</th>
-                <th scope="col">Quantity Selected</th>
-                <th scope="col">Sub Total</th>
-            </thead>
-            <tbody>
+            <div class="container">
+                <div class="row text-center ">
+            <div class="col-3"><h4><strong>Item</strong></h4></div>
+            <div class="col-3"><h4><strong>Price</strong></h4></div>
+            <div class="col-3"> <h4><strong>Quantity</strong></h4></div>
+            <div class="col-3"> <h4><strong>Sub Total</strong></h4></div>
+        </div>
                 {% for i in range(no_of_food_items) %}
-                <tr>
-                    <td id="item-{{i}}_name">{{food_items[i][0]}}</td>
-                    <td>
+                <div class="row text-center mb-3">
+                    <div class="col-3" id="item-{{i}}_name">{{food_items[i][0]}}</div>
+                    <div class="col-3">
                        <strong id="item-{{i}}_price">{{food_items[i][1]}}</strong>
-                    </td>
-                    <td>
-                        <button name="item-{{i}}" type="button" onclick="decrementQuantity(this)">-</button>
-                        <input class="text-center" type="number" name="{{food_items[i][0]}}" id="item-{{i}}" value="0" readonly />
-                        <button name="item-{{i}}" type="button" onclick="incrementQuantity(this)">+</button>
-                    </td>
-                    <td>
+                    </div>
+                    <div class="qty_button col-3 ">
+                        <button  name="item-{{i}}" type="button" onclick="decrementQuantity(this)">-</button>
+                        <input class="text-center w-25 " type="number" name="{{food_items[i][0]}}" id="item-{{i}}" value="0" readonly />
+                        <button  name="item-{{i}}" type="button" onclick="incrementQuantity(this)">+</button>
+                    </div>
+                    <div class="col-3">
                         <strong class="text-center" type="number" name="item-{{i}}_subTotal" id="item-{{i}}_subTotal">0</strong>
-                    </td>
-                </tr>
+                    </div>
+                </div>
+                <hr style="width:100%;text-align:left;margin-left:0">
                 {% endfor %}
-                <tr>
-                    <td>
-                        <h5><strong>Grand Total</strong></h5>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <h4><strong class="text-success" name="grandTotal" id="grandTotal">0</strong></h4>
-                    </td>
-                </tr>
-            </tbody>
+                <div class="row text-center">
+                    <div class="col-3"></div>
+                    <div class="col-3"></div>
+                    <div class="col-3"><h4><strong>Grand Total</strong></h4></div>
+                    <div class="col-3"><strong class="text-success" name="grandTotal" id="grandTotal">0</strong></div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-3"></div>
+                    <div class="col-3"></div>
+                    <div class="col-3"></div>
+                    <div class="col-3"><button class="btn btn-success mt-4" type="submit">VERIFY</button></div>
+                </div>
+                
+
+            </div>
         </table>
-
-        <button class="btn btn-success float-end m-3" type="submit">Proceed</button>
-
     </form>
 
     <!-- Don't write below this line -->
