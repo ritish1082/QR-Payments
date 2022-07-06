@@ -38,7 +38,7 @@ def login():
             return render_template('home.html')
 
     if session["username"]==None:
-        return render_template('login.html', status="Invalid Login Attempt")
+        return render_template('Login.html', status="Invalid Login Attempt")
 
 
 @app.route('/getStalls', methods=['GET'])
@@ -52,7 +52,7 @@ def stallsPage():
 
 
     else:
-        return render_template('login.html', status=None)
+        return render_template('Login.html', status=None)
 
 
 @app.route('/orderFood/<stall_name>', methods=['GET', 'POST'])
