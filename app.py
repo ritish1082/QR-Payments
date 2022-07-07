@@ -17,7 +17,7 @@ data = {}
 def homePage():
 
     session["username"]=session_username
-    return render_template('home.html')
+    return render_template('home.html',status="LOGIN")
     
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -34,7 +34,7 @@ def login():
         if user_data[0]==username and user_data[1]==password:
             session["username"]=username
 
-            return render_template('home.html')
+            return render_template('home.html',status=username)
 
     if session["username"]==None:
         return render_template('Login.html', status="Invalid Login Attempt")
