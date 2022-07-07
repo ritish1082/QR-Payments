@@ -1,4 +1,3 @@
-from crypt import methods
 import csv
 import os
 from flask import Flask, render_template, request, url_for, session, send_file
