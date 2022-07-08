@@ -20,15 +20,15 @@ We took this problem statement by experiencing the problem to make UPI payments 
 
 # What's inside the QR?
 This QR Code contains the details like:
-    ### User Data:
+   User Data:
         1. username,
         2. encrypted password.
         
-    ### QR Meta Data:
+   QR Meta Data:
         1. Date of QR generation,
         2. Time of QR generation.
         
-    ### Food Data:
+   Food Data:
         1. Quantity of Food ordered,
         2. Prices from Mobile App (compared with prices in database while scanning),
         3. Food stall name.
