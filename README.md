@@ -1,13 +1,13 @@
 # QR Payments System ( QR-GENERATOR )
 
-### Follow this link to view the hosted version of this project:
+## Follow this link to view the hosted version of this project:
 https://qrps-qr-generator.herokuapp.com/
 
-# Problem
+## Problem
 
 We took this problem statement by experiencing the problem to make UPI payments in our college canteen. Lack of internet services in our college motivated us to try building a prototype to this problem.
 
-# Our Approach
+## Our Approach
 
 1. Our solutions begins with the belief of having a money deposit section managed by our college, where students deposit there pocket money.
 2. If we place Touch Screen Monitors at every stall to take orders and deduct money from respective student account, it results in huge cost for        
@@ -18,7 +18,7 @@ We took this problem statement by experiencing the problem to make UPI payments 
 6. Thus user can login when he has internet and can use this app even when user is offline and generate QR Codes.
 7. We want to replace Touch Screen Monitors with student's mobiles to make food orders.
 
-# What's inside the QR?
+## What's inside the QR?
 This QR Code contains the details like:
       
       User Data:
@@ -34,12 +34,12 @@ This QR Code contains the details like:
         2. Prices from Mobile App (compared with prices in database while scanning),
         3. Food stall name.
         
-# Features of the QR
+## Features of the QR
 1. This QR Code contains the user pin in the encrypted format.
 2. QR Code is validate only for 15 mins from time of generation.
 3. Each QR Code is validate to make a single transaction.
         
-# Tech Stack Used
+## Tech Stack Used
    ### Front-End
       1. HTML
       2. Bootstrap
