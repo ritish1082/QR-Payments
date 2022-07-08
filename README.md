@@ -34,6 +34,11 @@ This QR Code contains the details like:
         2. Prices from Mobile App (compared with prices in database while scanning),
         3. Food stall name.
         
+# Features of the QR
+1. This QR Code contains the user pin in the encrypted format.
+2. QR Code is validate only for 15 mins from time of generation.
+3. Each QR Code is validate to make a single transaction.
+        
 # Tech Stack Used
    ### Front-End
       1. HTML
