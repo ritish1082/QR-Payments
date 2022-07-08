@@ -1,6 +1,6 @@
 # QRPS-QR-GENERATOR
 
-## Heroku hosted link:
+### Follow this link to view the hosted version of this project:
 https://qrps-qr-generator.herokuapp.com/
 
 # Objective
