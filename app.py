@@ -114,7 +114,7 @@ def generateQRCode():
 
         session[filename]=filename+'.png'
 
-        return render_template('serveQRCode.html', filename=filename+'.png')
+        return render_template('serveQRCode.html', filename=filename+'.png',username=session["username"])
 
     else:
 
@@ -138,7 +138,7 @@ def clearSession():
         except:
             continue
 
-    return render_template('home.html')
+    return render_template('home.html',status="LOGIN")
             
 
 if __name__ == '__main__':
