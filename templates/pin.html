@@ -9,19 +9,6 @@
         <title>PIN</title>
     </head>
     <body>
-        <div>
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand m-2" href="/"><strong>QR PAY</strong></a>
-                <a  class="m-2" href="/getStalls">
-                    {% if status!="Invalid Login Attempt" %}
-                        <strong>
-                            {{username}}
-                        </strong>
-                    {% endif %}
-                </a>
-              </nav>
-        </div>
-        
         <div class="container">
             <div class="pin_box rounded shadow">
                 <h5 class="text-center mb-3">Enter 6 digit PIN Number</h5>

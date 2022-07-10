@@ -9,18 +9,24 @@
         <title>Shops</title>
     </head>
     <body >
-        <div>
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand m-2" href="/"><strong>QR PAY</strong></a>
-                <a  class="m-2" href="/getStalls">
-                    {% if status!="Invalid Login Attempt" %}
-                        <strong>
-                            {{status}}
-                        </strong>
-                    {% endif %}
-                </a>
-              </nav>
-        </div>
+        <nav  class="navbar navbar-light bg-light">
+            <a class="navbar-brand m-2" href="/"><strong>QR PAY</strong></a>
+            <div class="me-4">
+              {% if status=="LOGIN" %}
+                <a href="/getStalls">LOGIN</a>
+              {% else %}
+              <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <!-- status not returned . fix in backend -->
+                    {{status}}
+                </button>
+                <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/clearSession">Logout</a>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </nav>
         <div class="container">
             <h2 class="mx-auto my-3 text-center"><strong>STALLS</strong></h2>
         <form>
