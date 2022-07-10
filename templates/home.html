@@ -18,7 +18,7 @@
         <!-- navbar -->
         <div>
             <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand m-2" href="/"><strong>QR PAY</strong></a>
+                <a class="navbar-brand m-2" href="/"><strong>QR Payments System</strong></a>
                 <a  class="m-2" href="/getStalls">
                     {% if status!="Invalid Login Attempt" %}
                         <strong>
@@ -30,14 +30,13 @@
         </div>
         <div class="container">
             <form action="/getStalls">
-                <h1 class="text-center text-warning m-3">QR Payments System</h1>
                 <div class="mt-5 mx-auto">
                     <div style="width: 22rem;" class="card  mx-auto shadow cards rounded ">
                         <img class=" w-100 img-fluid rounded" src="https://munch.mykaribe.com/images/food_animation.gif" alt="Unavailable">
                         <div class="card-body p-2">
                             <h5>{{stall_name}}</h5>
                         </div>
-                        <div>
+                        <div class="border">
                             <button class="btn btn-primary float-end m-2 " type="submit" >Get Stalls</button>
                         </div>
                     </div>
