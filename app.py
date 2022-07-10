@@ -18,7 +18,13 @@ def homePage():
 
     session["username"]=session_username
     return render_template('home.html',status="LOGIN")
+
+
+@app.route('/loginPage', methods=['GET'])
+def getLoginpage():
     
+    return render_template('Login.html', status=None)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -47,7 +53,7 @@ def stallsPage():
 
     if session["username"]!=None:
 
-        return render_template('stalls.html', stalls_names=stalls_names)
+        return render_template('stalls.html', stalls_names=stalls_names, status=session["username"])
 
 
     else:
@@ -70,7 +76,13 @@ def orderFood(stall_name):
 
     no_of_food_items = len(food_items)
 
-    return render_template('orderFood.html', username=session["username"], stall_name=stall_name, no_of_food_items=no_of_food_items, food_items=food_items)
+    if session["username"]!=None:
+
+        return render_template('orderFood.html', username=session["username"], stall_name=stall_name, no_of_food_items=no_of_food_items, food_items=food_items)
+
+    else:
+
+        return render_template('Login.html', status=None)
 
 
 @app.route('/enterPin/<stall_name>', methods=['GET', 'POST'])
@@ -80,7 +92,13 @@ def enterPin(stall_name):
     global data
     data=dict(request.form)
 
-    return render_template('pin.html', status=None)
+    if session["username"]!=None:
+
+        return render_template('pin.html', status=None)
+
+    else:
+
+        return render_template('Login.html', status=None)
 
 
 @app.route('/generateQRCode', methods=['GET', 'POST'])
@@ -114,8 +132,14 @@ def generateQRCode():
 
         session[filename]=filename+'.png'
 
-        return render_template('serveQRCode.html', filename=filename+'.png',username=session["username"])
+        if session["username"]!=None:
 
+            return render_template('serveQRCode.html', filename=filename+'.png',username=session["username"])
+
+        else:
+
+            return render_template('Login.html', status=None)
+    
     else:
 
         return render_template('pin.html', status="Invalid Pin")
@@ -124,7 +148,13 @@ def generateQRCode():
 @app.route('/downloadQRCode/<filename>', methods=['GET'])
 def downloadQRCode(filename):
 
-    return send_file('./static/qrcodes/'+filename, as_attachment=True)
+    if session["username"]!=None:
+
+        return send_file('./static/qrcodes/'+filename, as_attachment=True)
+
+    else:
+
+        return render_template('Login.html', status=None)
 
 
 @app.route('/clearSession', methods=['GET'])
@@ -138,7 +168,16 @@ def clearSession():
         except:
             continue
 
-    return render_template('home.html',status="LOGIN")
+    return render_template('home.html', status=session["username"])
+
+
+@app.route('/logout', methods=['GET'])
+def logout():
+
+    session.clear()
+    session["username"]=None
+
+    return render_template('home.html', status='LOGIN') 
             
 
 if __name__ == '__main__':

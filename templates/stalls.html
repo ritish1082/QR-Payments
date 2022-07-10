@@ -17,11 +17,10 @@
               {% else %}
               <div class="dropdown">
                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <!-- status not returned . fix in backend -->
-                    {{status}}
+                  {{status}}
                 </button>
                 <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="/clearSession">Logout</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
               </div>
               {% endif %}

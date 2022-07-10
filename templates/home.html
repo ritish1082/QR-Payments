@@ -20,14 +20,14 @@
       <a class="navbar-brand m-2" href="/"><strong>QR PAY</strong></a>
       <div class="me-4">
         {% if status=="LOGIN" %}
-          <a href="/getStalls">LOGIN</a>
+          <a href="/loginPage">LOGIN</a>
         {% else %}
         <div class="dropdown">
           <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{status}}
           </button>
           <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/clearSession">Logout</a>
+            <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </div>
         {% endif %}
