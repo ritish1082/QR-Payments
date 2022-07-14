@@ -25,16 +25,16 @@ The generated QR contains the following:
 
 ## Tech Stack
    ### Front End
-        - HTML
-        - Bootstrap
-        - CSS
-        - JS
-      ### Back End
-         - Flask
-         - Python
-      ### Database
-         - mySQL
-      ### QR Code
+      - HTML
+      - Bootstrap
+      - CSS
+      - JS
+   ### Back End
+      - Flask
+      - Python
+   ### Database
+      - mySQL
+   ### QR Code
       -  pyqrcode (QR Genertaion)
       - Open CV (QR Scanner)
    
