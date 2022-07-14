@@ -21,7 +21,7 @@ The generated QR contains the following:
 - Food Stall Name
 - Qunatity of each item
 - Price of each item 
-**A generated QR is only valid for 15 miutes after generation for a single transaction**
+- **A generated QR is only valid for 15 miutes after generation for a single transaction**
 
 # Tech Stack
 ### Front End
@@ -38,9 +38,9 @@ The generated QR contains the following:
    -  pyqrcode (QR Genertaion)
    - Open CV (QR Scanner)
    
-#Extention of Project
+# Extention of Project
 The scanner part of the project can be found at **https://github.com/manchalaharikesh/QRPS-QR-GENERATOR**
 
-#Further Scope
+# Further Scope
 As of now the project works on the web. A future development would be to convert this into a mobile application using any cross platform tools like Flutter, React Native. 
  
