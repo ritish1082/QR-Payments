@@ -24,7 +24,7 @@ The generated QR contains the following:
 - **A generated QR is only valid for 15 miutes after generation for a single transaction**
 
 ## Tech Stack
-      ### Front End
+   ### Front End
         - HTML
         - Bootstrap
         - CSS
