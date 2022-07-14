@@ -35,7 +35,7 @@ The generated QR contains the following:
    ### Database
       - mySQL
    ### QR Code
-      -  pyqrcode (QR Genertaion)
+      - pyqrcode (QR Genertaion)
       - Open CV (QR Scanner)
    
 ## Extention of Project
